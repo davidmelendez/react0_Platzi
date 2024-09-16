@@ -1,12 +1,12 @@
 import logo from './platzi.webp';
-import './App.css';
+
 import { TodoSearch } from './TodoSearch';
 import { TodoCounter } from './TodoCounter'
 import { TodoList } from './TodoList'; 
 import { TodoCreateBtn } from './TodoCreateBtn';
 import { TodoItem } from './TodoItem';
 import React from 'react';
-
+import './index.css';
 
 const itemsTodo = [
   {text: 'Todo A', completed: true},
