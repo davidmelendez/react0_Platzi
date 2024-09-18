@@ -5,6 +5,7 @@ import { TodoCounter } from './TodoCounter'
 import { TodoList } from './TodoList'; 
 import { TodoCreateBtn } from './TodoCreateBtn';
 import { TodoItem } from './TodoItem';
+import { TodoClick} from './TodoClick';
 import React from 'react';
 import './index.css';
 
@@ -20,7 +21,7 @@ function App() {
 
     <React.Fragment>
 
-
+      <TodoClick></TodoClick>
       <TodoCounter completed={5} total={20} />
       <TodoSearch />
 

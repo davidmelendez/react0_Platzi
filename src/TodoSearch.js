@@ -1,10 +1,16 @@
+import React from 'react';
+
 function TodoSearch(){
+
+  const [txtBuscar, settxtBuscar] = React.useState('');
+
     return(
-      <input placeholder="Buscar..." className="TodoSearch" onChange={(event) => {
+      <input placeholder="Buscar..." className="TodoSearch" value={txtBuscar} onChange={(event) => {
           console.log('TodoSearch');
-          console.log(event);
-          console.log(event.target);
-          console.log(event.target.value);
+         
+          settxtBuscar(event.target.value);
+
+          console.log(txtBuscar);
       }}></input>
     );
   }
