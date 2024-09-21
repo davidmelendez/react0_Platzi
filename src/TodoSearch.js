@@ -1,9 +1,8 @@
 import React from 'react';
 
-function TodoSearch(){
+function TodoSearch({txtBuscar,settxtBuscar}){
 
-  const [txtBuscar, settxtBuscar] = React.useState('');
-
+  
     return(
       <input placeholder="Buscar..." className="TodoSearch" value={txtBuscar} onChange={(event) => {
           console.log('TodoSearch');
