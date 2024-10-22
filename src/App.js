@@ -22,9 +22,14 @@ const itemsTodo = [
 function App() {
 
   //estado todos
+  //estado de lista de tods
   const [todoList,settodoList] = React.useState(itemsTodo);
+
+  //estado disparador al buscar un todo
   const [txtBuscar, settxtBuscar] = React.useState('');
 
+  //estado disparador todo completado
+  const [todos, settodos] = React.useState  (itemsTodo);
 
   //estados derivados
   const completedTodos = todoList.filter(
@@ -37,18 +42,52 @@ function App() {
       return todo.text.toUpperCase().includes(txtBuscar.toUpperCase())
     }
   );
+
+  const completeTodo = (text) => {
+    //creamos una copia de los todos
+    //ecma, javascript
+    const newTodos = [...todos];
+    let indexTodos = 0;
+
+    indexTodos = newTodos.findIndex(
+      (todo) => todo.text === text
+    );
+ 
+
+    if( newTodos[indexTodos].completed){
+      newTodos[indexTodos].completed = false;
+    }else{
+
+        newTodos[indexTodos].completed = true;
+   }
+    settodoList(newTodos);
+  }
+
+ const unCompleteTodo = (text) => {
+
+  let newTodos = [...todoList];
+  newTodos = newTodos.filter(todo => todo.text !== text);
+
+  settodoList(newTodos);
+ }
+
+
+
   return (
 
     <React.Fragment>
 
       <TodoClick></TodoClick>
-      <TodoCounter completed={5} total={20} />
+      <TodoCounter completed={completedTodos} total={totalTodos} />
       <TodoSearch txtBuscar={txtBuscar}
                    settxtBuscar={settxtBuscar}/>
 
       <TodoList> 
          {searchedTodo.map(todo => (
-            <TodoItem key={todo.text} text={todo.text} completed={todo.completed} />
+            <TodoItem
+              key={todo.text}  text={todo.text}  
+              completed={todo.completed}
+              onComplete = {() => completeTodo(todo.text)} onUnComplete = {() => unCompleteTodo(todo.text)} />
          ))}
       </TodoList>
 

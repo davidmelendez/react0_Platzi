@@ -2,7 +2,7 @@
 
 function TodoCreateBtn(){
     return(
-      <input type="button" value="+" className="CreateTodoButton" on></input>
+      <input type="button" value="+" className="CreateTodoButton"></input>
     );
   }
   
