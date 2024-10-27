@@ -1,16 +1,22 @@
+import {CompleteIcon} from './CompleteIcon'
+import {DeleteIcon} from './DeleteIcon'
+import './TodoItem.css'
 
 function TodoItem(props){
     return (
       <li className="TodoItem">
-        <span className={`Icon Icon-check ${props.completed && "Icon-check--active"}`} onClick={props.onComplete}>
+        <CompleteIcon/>
+       {/* <span className={`Icon Icon-check ${props.completed && "Icon-check--active"}`} onClick={props.onComplete}>
           V
-        </span>
+        </span>*/}
         <p className={`TodoItem-p ${props.completed && "TodoItem-p--complete"}`}>
           {props.text}
         </p>
-        <span className="Icon Icon-delete" onClick={props.onUnComplete}>
+        
+        <DeleteIcon />
+        {/*<span className="Icon Icon-delete" onClick={props.onUnComplete}>
           X
-        </span>
+        </span>*/}
         </li>
     );
   }
