@@ -9,6 +9,29 @@ import { TodoClick} from './TodoClick';
 import React from 'react';
 import './index.css';
 
+function useLocalStorage(itemName, initialValue){
+
+  const itemsInStorage = localStorage.getItem(itemName);
+  let storageParse;
+
+  if (!itemsInStorage) {
+    localStorage.setItem(itemName, JSON.stringify(initialValue));
+    storageParse = initialValue;
+  } else {
+    //variable storage
+    storageParse = JSON.parse(localStorage.getItem(itemName));
+  }
+
+  const [item, setItem] = React.useState(storageParse);
+  
+  const saveItems = (newItems) => {
+    localStorage.setItem(itemName, JSON.stringify(newItems))
+    setItem(newItems);
+  }
+
+  return [item, saveItems];
+}
+
 // const itemsTodo = [
 //   {text: 'Todo A', completed: false},
 //   {text: 'Todo B', completed: false},
@@ -21,26 +44,17 @@ import './index.css';
 //localStorage.removeItem('TODOS');
 
 function App() {
-  const itemsInStorage = localStorage.getItem("TODOS");
-  let storageParse;
-
-  if (!itemsInStorage) {
-    localStorage.setItem("TODOS", JSON.stringify([]));
-    storageParse = [];
-  } else {
-    //variable storage
-    storageParse = JSON.parse(localStorage.getItem("TODOS"));
-  }
+  
 
   //estado todos
-  //estado de lista de tods
-  const [todoList, settodoList] = React.useState(storageParse);
+  //estado de lista de todos
+  const [todoList, saveTodos] = useLocalStorage("TODOS",[]);
 
   //estado disparador al buscar un todo
   const [txtBuscar, settxtBuscar] = React.useState("");
 
   //estado disparador todo completado
-  const [todos, settodos] = React.useState(storageParse);
+  const [todos, settodos] =useLocalStorage("TODOS",[]);
 
   //estados derivados
   const completedTodos = todoList.filter((todo) => !!todo.completed).length;
@@ -51,10 +65,6 @@ function App() {
   });
 
 
-  const saveTodos = (newTodos) => {
-    localStorage.setItem('TODOS', JSON.stringify(newTodos))
-    settodoList(newTodos);
-  }
 
   const completeTodo = (text) => {
     //creamos una copia de los todos
