@@ -1,36 +1,8 @@
-import logo from './platzi.webp';
 
-import { TodoSearch } from './TodoSearch';
-import { TodoCounter } from './TodoCounter'
-import { TodoList } from './TodoList'; 
-import { TodoCreateBtn } from './TodoCreateBtn';
-import { TodoItem } from './TodoItem';
-import { TodoClick} from './TodoClick';
 import React from 'react';
-import './index.css';
+import { useLocalStorage } from './useLocalStorage';
 
-function useLocalStorage(itemName, initialValue){
-
-  const itemsInStorage = localStorage.getItem(itemName);
-  let storageParse;
-
-  if (!itemsInStorage) {
-    localStorage.setItem(itemName, JSON.stringify(initialValue));
-    storageParse = initialValue;
-  } else {
-    //variable storage
-    storageParse = JSON.parse(localStorage.getItem(itemName));
-  }
-
-  const [item, setItem] = React.useState(storageParse);
-  
-  const saveItems = (newItems) => {
-    localStorage.setItem(itemName, JSON.stringify(newItems))
-    setItem(newItems);
-  }
-
-  return [item, saveItems];
-}
+import AppUI from './AppUI';
 
 // const itemsTodo = [
 //   {text: 'Todo A', completed: false},
@@ -69,7 +41,7 @@ function App() {
   const completeTodo = (text) => {
     //creamos una copia de los todos
     //ecma, javascript
-    const newTodos = [...todos];
+    const newTodos = [...todoList];
     let indexTodos = 0;
 
     indexTodos = newTodos.findIndex((todo) => todo.text === text);
@@ -91,26 +63,16 @@ function App() {
   };
 
   return (
-    <React.Fragment>
-      <TodoClick></TodoClick>
-      <TodoCounter completed={completedTodos} total={totalTodos} />
-      <TodoSearch txtBuscar={txtBuscar} settxtBuscar={settxtBuscar} />
-
-      <TodoList>
-        {searchedTodo.map((todo) => (
-          <TodoItem
-            key={todo.text}
-            text={todo.text}
-            completed={todo.completed}
-            onComplete={() => completeTodo(todo.text)}
-            onUnComplete={() => unCompleteTodo(todo.text)}
-          />
-        ))}
-      </TodoList>
-
-      <TodoCreateBtn />
-      {/* coments   */}
-    </React.Fragment>
+    <AppUI
+    completedTodos={completedTodos}
+    totalTodos={totalTodos}
+    txtBuscar={txtBuscar}
+    settxtBuscar={settxtBuscar}
+    searchedTodo={searchedTodo}
+    completeTodo={completeTodo}
+    unCompleteTodo={unCompleteTodo}
+    
+    />
   );
 }
 
