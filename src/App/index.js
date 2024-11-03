@@ -17,16 +17,21 @@ import AppUI from './AppUI';
 
 function App() {
   
-
   //estado todos
   //estado de lista de todos
-  const [todoList, saveTodos] = useLocalStorage("TODOS",[]);
+  //podemos usar alias para no cambiar el nombre de propiedades usando los :
+  const {item: todoList,
+         saveItems: saveTodos,
+         loading,
+         error
+        } = useLocalStorage("TODOS",[]);
 
   //estado disparador al buscar un todo
   const [txtBuscar, settxtBuscar] = React.useState("");
 
+  //TODO:Revisar el uso de esto
   //estado disparador todo completado
-  const [todos, settodos] =useLocalStorage("TODOS",[]);
+  //const [todos, settodos] =useLocalStorage("TODOS",[]);
 
   //estados derivados
   const completedTodos = todoList.filter((todo) => !!todo.completed).length;
@@ -44,6 +49,7 @@ function App() {
     const newTodos = [...todoList];
     let indexTodos = 0;
 
+    if(newTodos !== undefined)
     indexTodos = newTodos.findIndex((todo) => todo.text === text);
 
     if (newTodos[indexTodos].completed) {
@@ -64,6 +70,8 @@ function App() {
 
   return (
     <AppUI
+    loading={loading}
+    error={error}
     completedTodos={completedTodos}
     totalTodos={totalTodos}
     txtBuscar={txtBuscar}

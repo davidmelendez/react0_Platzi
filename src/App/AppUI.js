@@ -9,6 +9,8 @@ import { TodoClick } from '../TodoClick';
 import '../index.css';
 
 function AppUI({
+    loading,
+    error,
     completedTodos,
     totalTodos,
     txtBuscar,
@@ -24,6 +26,9 @@ function AppUI({
           <TodoSearch txtBuscar={txtBuscar} settxtBuscar={settxtBuscar} />
     
           <TodoList>
+            {loading && <p>Estamos cargando...</p>}
+            {error && <p>Error...</p>}
+            {(!loading && searchedTodo.length == 0) && <p>No hay TODOS pendientes...</p>}
             {searchedTodo.map((todo) => (
               <TodoItem
                 key={todo.text}
