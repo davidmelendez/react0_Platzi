@@ -1,7 +1,15 @@
 import React from 'react';
 
-function TodoSearch({txtBuscar,settxtBuscar}){
 
+  import {TodoContext} from '../Context';
+  function TodoSearch(){
+  
+    const {
+      searchedTodo,
+      settxtBuscar,
+      txtBuscar
+    } = React.useContext(TodoContext)    
+    
   
     return(
       <input placeholder="Buscar..." className="TodoSearch" value={txtBuscar} onChange={(event) => {

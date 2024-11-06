@@ -49,4 +49,17 @@ function useLocalStorage(itemName, initialValue){
     };
   }
 
+
+// const itemsTodo = [
+//   {text: 'Todo A', completed: false},
+//   {text: 'Todo B', completed: false},
+//   {text: 'Todo C', completed: false},
+//   {text: 'Todo D', completed: false},
+//   {text: 'Todo E', completed: false},
+// ];
+
+// localStorage.setItem('TODOS',JSON.stringify(itemsTodo));
+//localStorage.removeItem('TODOS');
+
+
   export {useLocalStorage};

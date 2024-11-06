@@ -5,10 +5,12 @@ import { TodoList } from '../TodoList';
 import { TodoCreateBtn } from '../TodoCreateBtn';
 import { TodoItem } from '../TodoItem';
 import { TodoClick } from '../TodoClick';
-
+import { TodoContext } from '../Context';
 import '../index.css';
 
-function AppUI({
+function AppUI(){
+
+  const {
     loading,
     error,
     completedTodos,
@@ -18,27 +20,31 @@ function AppUI({
     searchedTodo,
     completeTodo,
     unCompleteTodo
-}){
+
+  } = React.useContext(TodoContext);
+
     return (
         <React.Fragment>
           <TodoClick></TodoClick>
-          <TodoCounter completed={completedTodos} total={totalTodos} />
-          <TodoSearch txtBuscar={txtBuscar} settxtBuscar={settxtBuscar} />
+          <TodoCounter/>
+          <TodoSearch/>
     
-          <TodoList>
-            {loading && <p>Estamos cargando...</p>}
-            {error && <p>Error...</p>}
-            {(!loading && searchedTodo.length == 0) && <p>No hay TODOS pendientes...</p>}
-            {searchedTodo.map((todo) => (
-              <TodoItem
-                key={todo.text}
-                text={todo.text}
-                completed={todo.completed}
-                onComplete={() => completeTodo(todo.text)}
-                onUnComplete={() => unCompleteTodo(todo.text)}
-              />
-            ))}
-          </TodoList>
+   
+              <TodoList>
+              {loading && <p>Estamos cargando...</p>}
+              {error && <p>Error...</p>}
+              {(!loading && searchedTodo.length == 0) && <p>No hay TODOS pendientes...</p>}
+              {searchedTodo.map((todo) => (
+                <TodoItem
+                  key={todo.text}
+                  text={todo.text}
+                  completed={todo.completed}
+                  onComplete={() => completeTodo(todo.text)}
+                  onUnComplete={() => unCompleteTodo(todo.text)}
+                />
+              ))}
+            </TodoList>
+      )
     
           <TodoCreateBtn />
           {/* coments   */}
