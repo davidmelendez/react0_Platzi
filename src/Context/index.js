@@ -13,6 +13,9 @@ function TodoProvider({children}){
     error
    } = useLocalStorage("TODOS",[]);
 
+// estado del modal, abierto o cerrado
+const [openModal, setOpenModal] = React.useState(false);
+
 //estado disparador al buscar un todo
 const [txtBuscar, settxtBuscar] = React.useState("");
 
@@ -57,16 +60,17 @@ saveTodos(newTodos);
 
     return (
         <TodoContext.Provider value={{
-            loading,
-            error,
+            // loading,
+            // error,
             completedTodos,
             totalTodos,
             txtBuscar,
             settxtBuscar,
             searchedTodo,
             completeTodo,
-            unCompleteTodo
-
+            unCompleteTodo,
+            openModal,
+            setOpenModal
         }}>
                {children} 
         </TodoContext.Provider>
