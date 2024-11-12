@@ -31,7 +31,15 @@ const searchedTodo = todoList.filter((todo) => {
 return todo.text.toUpperCase().includes(txtBuscar.toUpperCase());
 });
 
-
+const addTodo = (text) => {
+    const newTodos = [...todoList];
+    newTodos.push({
+        text,
+        completed: false
+    }
+    );
+    saveTodos(newTodos);
+}
 
 const completeTodo = (text) => {
 //creamos una copia de los todos
@@ -70,7 +78,8 @@ saveTodos(newTodos);
             completeTodo,
             unCompleteTodo,
             openModal,
-            setOpenModal
+            setOpenModal,
+            addTodo
         }}>
                {children} 
         </TodoContext.Provider>

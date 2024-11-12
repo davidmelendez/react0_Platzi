@@ -7,6 +7,7 @@ import { TodoItem } from '../TodoItem';
 import { TodoClick } from '../TodoClick';
 import { TodoContext } from '../Context';
 import { Modal } from '../Modal';
+import { TodoForm  } from '../TodoForm'
 import '../index.css';
 
 function AppUI(){
@@ -52,7 +53,7 @@ function AppUI(){
 
           {openModal && (
               <Modal>
-                Aqui va un formulario, seguro un componente
+             <TodoForm />
               </Modal>
           )}
              <TodoCreateBtn  />
