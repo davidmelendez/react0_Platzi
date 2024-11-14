@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Users/melen/MyData/EstudioParaSerConsultor/Platzi/REACT_CURSO/curso-react-intro/build/static/css/main.9a5186d6.css",
-    "main.js": "/Users/melen/MyData/EstudioParaSerConsultor/Platzi/REACT_CURSO/curso-react-intro/build/static/js/main.88a9b83a.js",
-    "index.html": "/Users/melen/MyData/EstudioParaSerConsultor/Platzi/REACT_CURSO/curso-react-intro/build/index.html",
-    "static/media/delete.svg": "/Users/melen/MyData/EstudioParaSerConsultor/Platzi/REACT_CURSO/curso-react-intro/build/static/media/delete.7018c4465589031bd51c8efbe21df9ca.svg",
-    "static/media/check.svg": "/Users/melen/MyData/EstudioParaSerConsultor/Platzi/REACT_CURSO/curso-react-intro/build/static/media/check.e9a948bba52a34123d2ed7aeda0ea495.svg",
-    "main.9a5186d6.css.map": "/Users/melen/MyData/EstudioParaSerConsultor/Platzi/REACT_CURSO/curso-react-intro/build/static/css/main.9a5186d6.css.map",
-    "main.88a9b83a.js.map": "/Users/melen/MyData/EstudioParaSerConsultor/Platzi/REACT_CURSO/curso-react-intro/build/static/js/main.88a9b83a.js.map"
+    "main.css": "/todos/static/css/main.9a5186d6.css",
+    "main.js": "/todos/static/js/main.b423d4bf.js",
+    "index.html": "/todos/index.html",
+    "static/media/delete.svg": "/todos/static/media/delete.7018c4465589031bd51c8efbe21df9ca.svg",
+    "static/media/check.svg": "/todos/static/media/check.e9a948bba52a34123d2ed7aeda0ea495.svg",
+    "main.9a5186d6.css.map": "/todos/static/css/main.9a5186d6.css.map",
+    "main.b423d4bf.js.map": "/todos/static/js/main.b423d4bf.js.map"
   },
   "entrypoints": [
     "static/css/main.9a5186d6.css",
-    "static/js/main.88a9b83a.js"
+    "static/js/main.b423d4bf.js"
   ]
 }
