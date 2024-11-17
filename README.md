@@ -1,3 +1,7 @@
+Una vez finalizado el curso se procede a publicar el app desarrollado a lo largo del curso en en siguiente enlace:
+https://davidmelendez.github.io/react0_Platzi/
+
+
 # Repositorio base del Curso de Introducción a React.js en Platzi
 
 ¡Hola, Platzinauta!
